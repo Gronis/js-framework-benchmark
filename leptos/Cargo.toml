@@ -1,0 +1,18 @@
+[package]
+authors = [""]
+edition = "2021"
+name = "js-framework-benchmark-leptos"
+version = "1.0.0"
+
+[dependencies]
+wasmdev = { git = "https://github.com/Gronis/wasmdev", features = ["nightly"] }
+wasm-bindgen = { version = "0.2", features = ["enable-interning"] }
+getrandom = { version = "0.2.7", features = ["js"] }
+rand = { version = "0.8.5", features = ["small_rng"] }
+web-sys = "0.3"
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+leptos = { version = "0.2.5" }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+leptos = { version = "0.2.5", features = ["ssr"], default-features = false }
